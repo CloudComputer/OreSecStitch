@@ -1,0 +1,46 @@
+# OreSecStitch parameter matrix for the two example mine cases.
+# Grid keys map 1:1 onto oresecstitch.StitchParams fields.
+# Each case is a sub-directory of examples/mine_cases/ holding input.txt.
+# Group datasets expand at runtime into one dataset per case sub-directory
+# (see run_experiments.py resolve_datasets); names are <prefix>_<case>.
+datasets:
+  mine_cases:
+    kind: contour_case
+    dir: examples/mine_cases
+    prefix: mine
+
+experiments:
+  # Branch strategy x triangulation cost with smooth end capping.
+  parameter_study:
+    caption: "Reconstruction parameter study on the two mine cases"
+    description: "Branch method x triangulation cost x smooth end capping"
+    datasets: [mine_cases]
+    grid:
+      branch_method: [point_distance, triangulation_region]
+      triangulation_cost: [perimeter, area]
+      end_capping: [smooth]
+    metrics: [volume, surface_area, n_triangles, time_s]
+
+  # End capping mode x contour densification.
+  end_capping_study:
+    caption: "End capping and contour densification"
+    description: "End capping mode x contour densification"
+    datasets: [mine_cases]
+    grid:
+      end_capping: [smooth, straight]
+      contour_densify: [false, true]
+    metrics: [volume, surface_area, n_triangles, time_s]
+
+  # The default settings used by reproduce.py.
+  reference_settings:
+    caption: "Default parameter set used by reproduce.py"
+    description: "Default settings on the two mine cases"
+    datasets: [mine_cases]
+    grid:
+      branch_method: [point_distance]
+      triangulation_cost: [perimeter]
+      end_capping: [smooth]
+      use_cgal: [true]
+      filter_small_branches: [false]
+      contour_densify: [false]
+    metrics: [volume, surface_area, n_triangles, time_s]
