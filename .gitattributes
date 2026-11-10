@@ -1,0 +1,14 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.cff text eol=lf
+*.txt text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.bat text eol=crlf
+*.pyd binary
+*.dll binary
+*.obj text eol=lf
