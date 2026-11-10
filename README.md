@@ -188,10 +188,7 @@ translation or scaling is applied. Only input contours are distributed. See
 OreSecStitch/
 |-- README.md
 |-- LICENSE                          GPL-3.0-only
-|-- CITATION.cff
-|-- requirements.txt
 |-- pyproject.toml
-|-- CMakeLists.txt                   C++ binding build definition
 |-- reproduce.py                     batch reconstruction of all cases
 |-- oresecstitch/                    Python package
 |   |-- api.py                       StitchParams / reconstruct / SurfaceMesh
